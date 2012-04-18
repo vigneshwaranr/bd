@@ -1,15 +1,15 @@
 me: bd
 
--------------------------------------------------------------
-Description: Go to a specified directory up in the hierarchy.
-
--------------------------------------------------------------
+--------------------------------------------------------------------
+Description: Go back to a specified directory in linux instead
+of typing "cd ../../.." redundantly.
+--------------------------------------------------------------------
 How to install:
 
 Just put this 'bd' file in your /usr/bin (or any other directory
 which is included in your "PATH" environment variable)
 
--------------------------------------------------------------
+--------------------------------------------------------------------
 How to use:
 
 If you are in this path /home/user/project/src/org/main/site/utils/file/reader/whatever
@@ -23,7 +23,7 @@ If you don't want to type the full directory name, then you can use
 the -s switch (meaning starts with) and just give the starting few characters
      . bd -s si
 
--------------------------------------------------------------
+--------------------------------------------------------------------
 Extra settings:
 
 To get the most out of it, put this line: 
