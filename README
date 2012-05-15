@@ -58,7 +58,7 @@ Example:
 
 2. If you want to execute a file somewhere in a parent directory,
             `bd p`/build.sh
-   will execute /home/user/project/build.py while not changing the
+   will execute /home/user/project/build.sh while not changing the
    current directory.
 
 3. If you reside in /home/user/project/src/org/main/site/utils/file/reader/whatever 
