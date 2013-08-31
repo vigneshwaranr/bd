@@ -1,6 +1,6 @@
 # bd
 
-#### Description: Go back to a specific parent directory in linux instead of typing "cd ../../.." redundantly.
+#### Description: Quickly go back to a specific parent directory in linux instead of typing "cd ../../.." redundantly.
 
 ---
 
@@ -40,15 +40,15 @@ You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> wi
    without going there, then you can use:
 		<code>ls \`bd p\`</code>
    in the given example, it will list the contents of 
-             /home/user/project/
+             `/home/user/project/`
 
 2. If you want to execute a file somewhere in a parent directory,
             <code>\`bd p\`/build.sh</code>
-   will execute /home/user/project/build.sh while not changing the
+   will execute `/home/user/project/build.sh` while not changing the
    current directory.
 
-3. If you reside in /home/user/project/src/org/main/site/utils/file/reader/whatever 
-   and want to change to /home/user/project/test, then try
+3. If you reside in `/home/user/project/src/org/main/site/utils/file/reader/whatever`
+   and want to change to `/home/user/project/test`, then try
             <code>cd \`bd p\`/test</code>
 
 --------------------------------------------------------------------
