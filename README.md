@@ -17,7 +17,7 @@ in your `~/.bashrc` file and source it by typing `source ~/.bashrc`
 **How to use:**
 
 If you are in this path `/home/user/project/src/org/main/site/utils/file/reader/whatever`
-and you want to go to site directory quickly, 
+and you want to go to `site` directory quickly, 
 
 then just type:
      `bd site`
