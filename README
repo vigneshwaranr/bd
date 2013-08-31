@@ -66,3 +66,6 @@ Example:
             cd `bd p`/test
 
 --------------------------------------------------------------------
+
+Screenshot:
+![bd screenshot](https://raw.github.com/vigneshwaranr/bd/master/screenshot/bd.png "Screenshot that shows some of several ways to use bd")
