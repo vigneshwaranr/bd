@@ -22,9 +22,7 @@ and you want to go to site directory quickly,
 then just type:
      `bd site`
 
-In fact, You can simply type <code>bd *<starting few letters>*</code> like `bd s` or `bd si`
-
-(Your intuition will tell you how to use)
+In fact, You can simply type <code>bd *\<starting few letters\>*</code> like `bd s` or `bd si`
 
 If there are more than one directories with same name up in the hierarchy, bd will take you to the closest. (Not considering the immediate parent.)
 
@@ -32,9 +30,9 @@ If there are more than one directories with same name up in the hierarchy, bd wi
 
 **Other uses:**
 
-Using bd within backticks (<code>\`bd <letter(s)>\`</code>) prints out the path without changing the current directory.
+Using bd within backticks (<code>\`bd \<letter(s)\>\`</code>) prints out the path without changing the current directory.
 
-You can take advantage of that by combining <code>\`bd <letter(s)>\`</code> with other commands such as ls, ln, echo, zip, tar etc..
+You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> with other commands such as ls, ln, echo, zip, tar etc..
 
 **Example:**
 
@@ -55,5 +53,5 @@ You can take advantage of that by combining <code>\`bd <letter(s)>\`</code> with
 
 --------------------------------------------------------------------
 
-Screenshot:
+**Screenshot:**
 ![bd screenshot](https://raw.github.com/vigneshwaranr/bd/master/screenshot/bd.png "Screenshot that shows some of several ways to use bd")
