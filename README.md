@@ -6,11 +6,13 @@
 
 **How to install:**
 
-Just put this 'bd' file in your `/usr/bin` (or any other directory which is included in your "PATH" environment variable)
+* `wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd`
 
-And put this line: 
-     `alias bd=". bd -s"`
-in your `~/.bashrc` file and source it by typing `source ~/.bashrc`
+* Make it executable `chmod +x /usr/bin/bd`
+
+* `echo 'alias bd=". bd -s"' >> ~/.bashrc`
+
+* `source ~/.bashrc`
 
 ---
 
