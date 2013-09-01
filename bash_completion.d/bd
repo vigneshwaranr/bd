@@ -1,0 +1,8 @@
+#!/bin/bash
+# Add autocomplete support for bd. Tested only in bash.
+_bd()
+{
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$( pwd | sed 's|/| |g' )" -- $cur) )
+}
+complete -F _bd bd
