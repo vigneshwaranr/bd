@@ -31,6 +31,10 @@ usage_error () {
   echo ""
   echo "So in the case of the given example, it would be"
   echo "     'bd s' or 'bd si'"
+  echo ""
+  echo "For case-insensitive directory matching, using -si instead of -s, after bd:"
+  echo "     '. bd -si'"
+  echo "Note: this requires GNU sed to be installed (BSD sed on OS X 10.8.2 won't work)."
 }
 if [ $# -eq 0 ]
 then
