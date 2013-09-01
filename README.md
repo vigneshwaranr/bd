@@ -8,7 +8,7 @@
 
 * `wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd`
 
-* Make it executable `chmod +x /usr/bin/bd`
+* `chmod +rx /usr/bin/bd`
 
 * `echo 'alias bd=". bd -s"' >> ~/.bashrc`
 
