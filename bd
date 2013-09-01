@@ -39,7 +39,7 @@ elif [ $# -eq 1 -a "$1" = "-s" ]
 then
   usage_error
 else
-  export OLDPWD=`pwd`
+  OLDPWD=`pwd`
 
   if [ "$1" = "-s" ]
   then
