@@ -1,5 +1,5 @@
 #! /bin/sh
-usage_error () {
+long_usage () {
   echo "------------------------------------------------------------------"
   echo "Name: bd"
   echo ""
@@ -32,12 +32,20 @@ usage_error () {
   echo "So in the case of the given example, it would be"
   echo "     'bd s' or 'bd si'"
 }
+
+short_usage () {
+  echo "usage: $0 [-h] [-s] dirname"
+}
+
 if [ $# -eq 0 ]
 then
-  usage_error
+  short_usage
 elif [ $# -eq 1 -a "$1" = "-s" ]
 then
-  usage_error
+  short_usage
+elif [ "$1" = "-h" -o "$2" = "-h" ]
+then
+  long_usage
 else
   OLDPWD=`pwd`
 
