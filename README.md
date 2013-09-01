@@ -21,7 +21,7 @@ If you are in this path `/home/user/project/src/org/main/site/utils/file/reader/
 and you want to go to `site` directory quickly, 
 
 then just type:
-     `bd site`
+     <s>`bd site`</></include.diagnostic.synopsis>
 
 In fact, You can simply type <code>bd *\<starting few letters\>*</code> like `bd s` or `bd si`
 
