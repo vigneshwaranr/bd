@@ -7,9 +7,11 @@
 **How to install:**
 
 ```shell
-wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
+wget -O /usr/bin/bd https://raw.github.com/marceloslacerda/bd/master/bd
+wget -O /etc/bash_completion.d/bd https://raw.github.com/marceloslacerda/bd/master/bd_complete
 chmod +rx /usr/bin/bd
 echo 'alias bd=". bd -s"' >> ~/.bashrc
+source /etc/bash_completion.d/bd
 source ~/.bashrc
 ```
 
