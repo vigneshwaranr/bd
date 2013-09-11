@@ -43,10 +43,10 @@ else
 
   if [ "$1" = "-s" ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$2'[^/]*/\).*|\1|'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$2'[^/]*/\).*|\1|i'`
     index=`echo $NEWPWD | awk '{ print index($1,"/'$2'"); }'`
   else
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$1'/\).*|\1|'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$1'/\).*|\1|i'`
     index=`echo $NEWPWD | awk '{ print index($1,"/'$1'/"); }'`
   fi
   
