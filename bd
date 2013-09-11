@@ -1,5 +1,5 @@
 #! /bin/sh
-usage_error () {
+long_usage () {
   echo "------------------------------------------------------------------"
   echo "Name: bd"
   echo ""
@@ -36,12 +36,20 @@ usage_error () {
   echo "     '. bd -si'"
   echo "Note: this requires GNU sed to be installed (BSD sed on OS X 10.8.2 won't work)."
 }
+
+short_usage () {
+  echo "usage: $0 [-h] [-s] dirname"
+}
+
 if [ $# -eq 0 ]
 then
-  usage_error
+  short_usage
 elif [ $# -eq 1 -a "$1" = "-s" ]
 then
-  usage_error
+  short_usage
+elif [ "$1" = "-h" -o "$2" = "-h" ]
+then
+  long_usage
 else
   OLDPWD=`pwd`
 
