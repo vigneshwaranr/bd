@@ -11,8 +11,10 @@ wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
 chmod +rx /usr/bin/bd
 echo 'alias bd=". bd -s"' >> ~/.bashrc
 source ~/.bashrc
-# Bash autocomplete.
+
+# If you need autocomplete support, follow these two steps
 wget -O /etc/bash_completion.d/bd https://raw.github.com/vigneshwaranr/bd/master/bash_completion.d/bd
+source /etc/bash_completion.d/bd
 ```
 
 ---
