@@ -17,6 +17,8 @@ wget -O /etc/bash_completion.d/bd https://raw.github.com/vigneshwaranr/bd/master
 source /etc/bash_completion.d/bd
 ```
 
+To enable case-insensitive directory name matching, use `-si` instead of `-s` in the alias.
+
 ---
 
 **How to use:**
