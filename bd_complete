@@ -1,0 +1,11 @@
+function _bdcomplete_()
+{
+    local cmd="${1##*/}"
+    local word=${COMP_WORDS[COMP_CWORD]}
+    local line=${COMP_LINE}
+    local xpat='!*.foo'
+    local words=$(pwd | tr / '\n')
+    COMPREPLY=($(compgen -W "$words" "${word}"))
+}
+
+complete -F _bdcomplete_ bd
