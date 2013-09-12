@@ -58,7 +58,19 @@ You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> wi
    and want to change to `/home/user/project/test`, then try
             <code>cd \`bd p\`/test</code>
 
---------------------------------------------------------------------
+---
 
 **Screenshot:**
 ![bd screenshot](https://raw.github.com/vigneshwaranr/bd/master/screenshot/bd.png "Screenshot that shows some of several ways to use bd")
+
+
+---
+
+**Thanks:**
+* [@jaysh](https://github.com/jaysh) - Autocomplete support
+* [@rmhsilva](https://github.com/rmhsilva) - Case-Insensitive directory name matching
+
+---
+
+**See also:**
+* [Tarrasch/zsh-bd](https://github.com/Tarrasch/zsh-bd) - bd for zsh
