@@ -61,7 +61,7 @@ You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> wi
 ---
 
 **Screenshot:**
-![bd screenshot](screenshot/bd.png "Screenshot that shows some of several ways to use bd")
+![bd screenshot](https://raw.github.com/vigneshwaranr/bd/master/screenshot/bd.png "Screenshot that shows some of several ways to use bd")
 
 
 ---
