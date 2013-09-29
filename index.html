@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>bd by vigneshwaranr</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>bd</h1>
+        <h2>Quickly go back to a parent directory in linux instead of typing &quot;cd ../../..&quot; repeatedly</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/vigneshwaranr/bd/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/vigneshwaranr/bd/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/vigneshwaranr/bd" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1>
+<a name="bd" class="anchor" href="#bd"><span class="octicon octicon-link"></span></a>bd</h1>
+
+<h4>
+<a name="description-quickly-go-back-to-a-specific-parent-directory-in-linux-instead-of-typing-cd--redundantly" class="anchor" href="#description-quickly-go-back-to-a-specific-parent-directory-in-linux-instead-of-typing-cd--redundantly"><span class="octicon octicon-link"></span></a>Description: Quickly go back to a specific parent directory in linux instead of typing "cd ../../.." redundantly.</h4>
+
+<hr><p><strong>How to install:</strong></p>
+
+<pre lang="shell"><code>wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
+chmod +rx /usr/bin/bd
+echo 'alias bd=". bd -s"' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+
+# If you need autocomplete support, follow these two steps
+wget -O /etc/bash_completion.d/bd https://raw.github.com/vigneshwaranr/bd/master/bash_completion.d/bd
+source /etc/bash_completion.d/bd
+</code></pre>
+
+<p>To enable case-insensitive directory name matching, use <code>-si</code> instead of <code>-s</code> in the alias.</p>
+
+<hr><p><strong>How to use:</strong></p>
+
+<p>If you are in this path <code>/home/user/project/src/org/main/site/utils/file/reader/whatever</code>
+and you want to go to <code>site</code> directory quickly, </p>
+
+<p>then just type:
+     <code>bd site</code></p>
+
+<p>In fact, You can simply type <code>bd <em>&lt;starting few letters&gt;</em></code> like <code>bd s</code> or <code>bd si</code></p>
+
+<p>If there are more than one directories with same name up in the hierarchy, bd will take you to the closest. (Not considering the immediate parent.)</p>
+
+<hr><p><strong>Other uses:</strong></p>
+
+<p>Using bd within backticks (<code>`bd &lt;letter(s)&gt;`</code>) prints out the path without changing the current directory.</p>
+
+<p>You can take advantage of that by combining <code>`bd &lt;letter(s)&gt;`</code> with other commands such as ls, ln, echo, zip, tar etc..</p>
+
+<p><strong>Example:</strong></p>
+
+<ol>
+<li><p>If you just want to list the contents of a parent directory,
+without going there, then you can use:
+    <code>ls `bd p`</code>
+in the given example, it will list the contents of 
+         <code>/home/user/project/</code></p></li>
+<li><p>If you want to execute a file somewhere in a parent directory,
+        <code>`bd p`/build.sh</code>
+will execute <code>/home/user/project/build.sh</code> while not changing the
+current directory.</p></li>
+<li><p>If you reside in <code>/home/user/project/src/org/main/site/utils/file/reader/whatever</code>
+and want to change to <code>/home/user/project/test</code>, then try
+        <code>cd `bd p`/test</code></p></li>
+</ol><hr><p><strong>Screenshot:</strong>
+<img src="screenshot/bd.png" alt="bd screenshot" title="Screenshot that shows some of several ways to use bd"></p>
+
+<hr><p><strong>Thanks:</strong></p>
+
+<ul>
+<li>
+<a href="https://github.com/jaysh">@jaysh</a> - Autocomplete support</li>
+<li>
+<a href="https://github.com/rmhsilva">@rmhsilva</a> - Case-Insensitive directory name matching</li>
+</ul><hr><p><strong>See also:</strong></p>
+
+<ul>
+<li>
+<a href="https://github.com/Tarrasch/zsh-bd">Tarrasch/zsh-bd</a> - bd for zsh</li>
+</ul>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
