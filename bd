@@ -69,4 +69,5 @@ else
   echo $NEWPWD
   cd "$NEWPWD"
   unset NEWPWD
+  unhash -d NEWPWD
 fi
