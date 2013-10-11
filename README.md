@@ -74,3 +74,4 @@ You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> wi
 
 **See also:**
 * [Tarrasch/zsh-bd](https://github.com/Tarrasch/zsh-bd) - bd for zsh
+* [0rax/fish-bd](https://github.com/0rax/fish-bd) - bd for [fish](http://fishshell.com/) shell
