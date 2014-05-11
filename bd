@@ -47,26 +47,33 @@ then
   usage_error
 else
   OLDPWD=`pwd`
+  arg=$1
+  test "$1" = "-s" -o "$1" = "-si" && arg=$2
+  #args=( ${args/\// } )
+
+  search=`echo $arg | sed 's|\([^/]*\)/.*|\1|'`
+  descend=`echo $arg | sed 's|[^/]*/\(.*\)|\1|'`
 
   if [ "$1" = "-s" ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$2'[^/]*/\).*|\1|'`
-    index=`echo $NEWPWD | awk '{ print index($0,"/'$2'"); }'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$search'[^/]*/\).*|\1|'`
+    index=`echo $NEWPWD | awk '{ print index($0,"/'$search'"); }'`
   elif [ "$1" = "-si" ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$2'[^/]*/\).*|\1|I'`
-    index=`echo $NEWPWD | awk '{ print index(tolower($0),tolower("/'$2'")); }'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$search'[^/]*/\).*|\1|I'`
+    index=`echo $NEWPWD | awk '{ print index(tolower($0),tolower("/'$search'")); }'`
   else
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$1'/\).*|\1|'`
-    index=`echo $NEWPWD | awk '{ print index($1,"/'$1'/"); }'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$search'/\).*|\1|'`
+    index=`echo $NEWPWD | awk '{ print index($1,"/'$search'/"); }'`
   fi
   
   if [ $index -eq 0 ]
   then
-    echo "No such occurrence."
+    echo "No such occurrence: $search"
+    descend=""
   fi
   
-  echo $NEWPWD
-  cd "$NEWPWD"
+  echo "$NEWPWD$descend"
+  cd "$NEWPWD$descend"
   unset NEWPWD
 fi
