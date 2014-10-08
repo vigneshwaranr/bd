@@ -43,12 +43,12 @@ newpwd() {
   OLDPWD=$1
   if [ "$2" = "-s" ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$3'[^/]*/\).*|\1|'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(/'$3'[^/]*/\).*|\1|'`
   elif [ "$2" = "-si" ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$3'[^/]*/\).*|\1|I'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(/'$3'[^/]*/\).*|\1|I'`
   else
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$2'/\).*|\1|'`
+    NEWPWD=`echo $OLDPWD | sed 's|\(/'$2'/\).*|\1|'`
   fi
 }
 
