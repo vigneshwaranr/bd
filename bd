@@ -41,10 +41,10 @@ EOF
 
 newpwd() {
   OLDPWD=$1
-  if [ "$2" = "-s" ]
+  if [ "$2" = -s ]
   then
     NEWPWD=`echo $OLDPWD | sed 's|\(/'$3'[^/]*/\).*|\1|'`
-  elif [ "$2" = "-si" ]
+  elif [ "$2" = -si ]
   then
     NEWPWD=`echo $OLDPWD | sed 's|\(/'$3'[^/]*/\).*|\1|I'`
   else
@@ -55,7 +55,7 @@ newpwd() {
 if [ $# -eq 0 ]
 then
   usage_error
-elif [ $# -eq 1 -a "$1" = "-s" ]
+elif [ $# -eq 1 -a "$1" = -s ]
 then
   usage_error
 else
