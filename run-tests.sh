@@ -20,6 +20,7 @@ assertEquals() {
         ((failure++))
         echo Assertion failed: $expected '!=' $actual >&2
         caller 0
+        echo
     fi
 }
 
@@ -54,6 +55,13 @@ assertEquals 0 $index
 newpwd $sample -si Sr
 assertEquals /home/user/project/src/ $NEWPWD
 assertEquals 19 $index
+
+sample='/home/user/my project/src'
+
+# test run with space in dirname
+newpwd "$sample" -s my
+assertEquals '/home/user/my project/' "$NEWPWD"
+assertEquals 11 $index
 
 echo
 [[ $failure = 0 ]] && printf $green || printf $red
