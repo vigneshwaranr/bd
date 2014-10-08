@@ -44,14 +44,11 @@ newpwd() {
   if [ "$2" = "-s" ]
   then
     NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$3'[^/]*/\).*|\1|'`
-    index=`echo $NEWPWD | awk '{ print index($0,"/'$3'"); }'`
   elif [ "$2" = "-si" ]
   then
     NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$3'[^/]*/\).*|\1|I'`
-    index=`echo $NEWPWD | awk '{ print index(tolower($0),tolower("/'$3'")); }'`
   else
     NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$2'/\).*|\1|'`
-    index=`echo $NEWPWD | awk '{ print index($1,"/'$2'/"); }'`
   fi
 }
 
@@ -66,7 +63,7 @@ else
 
   newpwd "$OLDPWD" "$@"
   
-  if [ $index -eq 0 ]
+  if [ "$NEWPWD" = "$OLDPWD" ]
   then
     echo "No such occurrence."
   fi
