@@ -40,15 +40,15 @@ EOF
 }
 
 newpwd() {
-  OLDPWD=$1
+  oldpwd=$1
   if [ "$2" = -s ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(/'$3'[^/]*/\).*|\1|'`
+    NEWPWD=`echo $oldpwd | sed 's|\(/'$3'[^/]*/\).*|\1|'`
   elif [ "$2" = -si ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(/'$3'[^/]*/\).*|\1|I'`
+    NEWPWD=`echo $oldpwd | sed 's|\(/'$3'[^/]*/\).*|\1|I'`
   else
-    NEWPWD=`echo $OLDPWD | sed 's|\(/'$2'/\).*|\1|'`
+    NEWPWD=`echo $oldpwd | sed 's|\(/'$2'/\).*|\1|'`
   fi
 }
 
@@ -59,11 +59,11 @@ elif [ $# -eq 1 -a "$1" = -s ]
 then
   usage_error
 else
-  OLDPWD=`pwd`
+  oldpwd=`pwd`
 
-  newpwd "$OLDPWD" "$@"
+  newpwd "$oldpwd" "$@"
   
-  if [ "$NEWPWD" = "$OLDPWD" ]
+  if [ "$NEWPWD" = "$oldpwd" ]
   then
     echo "No such occurrence."
   fi
