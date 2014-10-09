@@ -6,9 +6,26 @@ _bd()
     local IFS=$'\n'
     # Current argument on the command line.
     local cur=${COMP_WORDS[COMP_CWORD]}
-    # Available directories to autcomplete to.
-    local completions=$( pwd | sed 's|/|\n|g' )
+    # Split current argument into search term and descend path.
+    local search=`echo $cur | sed 's|\([^/]*\).*|\1|'`
+    local descend=`echo $cur | sed -n 's|[^/]*/\(.*\)|\1|p'`
 
-    COMPREPLY=( $(compgen -W "$completions" -- $cur) )
+    # Available directories to autocomplete to.
+    local basecomp=`pwd | sed 's|/|\n|g'`
+    basecomp=$(compgen -S "/" -W "$basecomp" -- $search)
+
+    if [[ $descend ]] && [[ ! $basecomp =~ " " ]]
+    then
+        # Find base directory to complete descend path from using bd.
+        local basedir=`bd $search`
+        local completions=$(compgen -d -S "/" -o nospace -- "$basedir$descend")
+        # Replace full base dir path with base dir name only, so that bd works.
+        completions=${completions//$basedir/$basecomp}
+    else
+        local completions=$basecomp
+    fi
+
+    COMPREPLY=( $completions )
 }
-complete -F _bd bd
+# `filenames` option handles special character escaping in paths.
+complete -o nospace -o filenames -F _bd bd
