@@ -58,7 +58,7 @@ assertEquals '/home/user/my project/' "$NEWPWD"
 
 # should take to closest matching dir
 newpwd /tmp/a/b/c/d/a/b a
-assertEquals /tmp/a/b/c/d/a "$NEWPWD"
+assertEquals /tmp/a/b/c/d/a/ "$NEWPWD"
 
 echo
 [[ $failure = 0 ]] && printf $green || printf $red

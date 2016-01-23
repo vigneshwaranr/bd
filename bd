@@ -48,7 +48,7 @@ newpwd() {
   then
     NEWPWD=`echo $oldpwd | perl -pe 's|(/'$3'[^/]*/).*|$1|i'`
   else
-    NEWPWD=`echo $oldpwd | sed 's|\(/'$2'/\).*|\1|'`
+    NEWPWD=`echo $oldpwd | sed 's|\(.*/'$2'/\).*|\1|'`
   fi
 }
 
