@@ -31,36 +31,36 @@ assertEquals() {
     fi
 }
 
-sample=/home/user/project/src/org/main/site/utils/file/reader/whatever
+oldpwd=/home/user/project/src/org/main/site/utils/file/reader/whatever
 
 # test run with no args
-newpwd $sample
-assertEquals $sample $NEWPWD
+newpwd $oldpwd
+assertEquals $oldpwd $NEWPWD
 
 # test run with exact match
-newpwd $sample src
+newpwd $oldpwd src
 assertEquals /home/user/project/src/ $NEWPWD
 
 # test run with prefix but no -s so not found
-newpwd $sample sr
-assertEquals $sample $NEWPWD
+newpwd $oldpwd sr
+assertEquals $oldpwd $NEWPWD
 
 # test run with prefix found
-newpwd $sample -s sr
+newpwd $oldpwd -s sr
 assertEquals /home/user/project/src/ $NEWPWD
 
 # test run with prefix not found because case sensitive
-newpwd $sample -s Sr
-assertEquals $sample $NEWPWD
+newpwd $oldpwd -s Sr
+assertEquals $oldpwd $NEWPWD
 
 # test run with prefix found thanks to -si
-newpwd $sample -si Sr
+newpwd $oldpwd -si Sr
 assertEquals /home/user/project/src/ $NEWPWD
 
-sample='/home/user/my project/src'
+oldpwd='/home/user/my project/src'
 
 # test run with space in dirname
-newpwd "$sample" -s my
+newpwd "$oldpwd" -s my
 assertEquals '/home/user/my project/' "$NEWPWD"
 
 # should take to closest matching dir
