@@ -1,10 +1,11 @@
 # bd
 
-#### Description: Quickly go back to a specific parent directory in linux instead of typing "cd ../../.." redundantly.
+#### Description
+Quickly go back to a specific parent directory in bash instead of typing "cd ../../.." redundantly.
 
 ---
 
-**How to install:**
+**Installation**
 
 ```shell
 wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
