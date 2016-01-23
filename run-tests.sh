@@ -22,8 +22,11 @@ assertEquals() {
         ((success++))
     else
         ((failure++))
-        echo "Assertion failed: $expected != $actual" >&2
-        caller 0
+        {
+            echo Assertion failed on line $(caller 0)
+            echo "  Expected: $expected"
+            echo "  Actual  : $actual"
+        } >&2
         echo
     fi
 }
