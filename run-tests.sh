@@ -57,6 +57,10 @@ assertEquals $oldpwd $NEWPWD
 newpwd $oldpwd -si Sr
 assertEquals /home/user/project/src/ $NEWPWD
 
+# handling spaces: should do nothing for prefix match without -s
+newpwd '/home/user/my project/src' my
+assertEquals '/home/user/my project/src' "$NEWPWD"
+
 # handling spaces: should jump for exact match
 newpwd '/home/user/my project/src' -s my
 assertEquals '/home/user/my project/' "$NEWPWD"
