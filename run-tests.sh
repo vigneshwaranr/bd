@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# just to include the functions defined in ./bd
 . bd nonexistent > /dev/null
 
 red='\e[0;31m'
