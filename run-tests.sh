@@ -4,7 +4,7 @@
 cd $(dirname "$0")
 
 # just to include the functions defined in ./bd
-. ./bd nonexistent > /dev/null
+. ./bd /dev/null > /dev/null
 
 red='\e[0;31m'
 green='\e[0;32m'
