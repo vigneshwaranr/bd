@@ -40,33 +40,30 @@ EOF
 }
 
 newpwd() {
-  OLDPWD=$1
-  if [ "$2" = "-s" ]
+  oldpwd=$1
+  if [ "$2" = -s ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$3'[^/]*/\).*|\1|'`
-    index=`echo $NEWPWD | awk '{ print index($0,"/'$3'"); }'`
-  elif [ "$2" = "-si" ]
+    NEWPWD=`echo $oldpwd | sed 's|\(/'$3'[^/]*/\).*|\1|'`
+  elif [ "$2" = -si ]
   then
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$3'[^/]*/\).*|\1|I'`
-    index=`echo $NEWPWD | awk '{ print index(tolower($0),tolower("/'$3'")); }'`
+    NEWPWD=`echo $oldpwd | perl -pe 's|(/'$3'[^/]*/).*|$1|i'`
   else
-    NEWPWD=`echo $OLDPWD | sed 's|\(.*/'$2'/\).*|\1|'`
-    index=`echo $NEWPWD | awk '{ print index($1,"/'$2'/"); }'`
+    NEWPWD=`echo $oldpwd | sed 's|\(/'$2'/\).*|\1|'`
   fi
 }
 
 if [ $# -eq 0 ]
 then
   usage_error
-elif [ $# -eq 1 -a "$1" = "-s" ]
+elif [ $# -eq 1 -a "$1" = -s ]
 then
   usage_error
 else
-  OLDPWD=`pwd`
+  oldpwd=`pwd`
 
-  newpwd "$OLDPWD" "$@"
+  newpwd "$oldpwd" "$@"
   
-  if [ $index -eq 0 ]
+  if [ "$NEWPWD" = "$oldpwd" ]
   then
     echo "No such occurrence."
   fi
