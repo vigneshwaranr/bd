@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# make sure we're in the project directory
+cd $(dirname "$0")
+
 # just to include the functions defined in ./bd
-. bd nonexistent > /dev/null
+. ./bd nonexistent > /dev/null
 
 red='\e[0;31m'
 green='\e[0;32m'
