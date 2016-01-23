@@ -35,7 +35,6 @@ So in the case of the given example, it would be
 
 For case-insensitive directory matching, using -si instead of -s, after bd:
      '. bd -si'
-Note: this requires GNU sed to be installed (BSD sed on OS X 10.8.2 won't work).
 EOF
 }
 
