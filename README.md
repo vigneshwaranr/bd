@@ -70,7 +70,7 @@ You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> wi
 **Thanks:**
 * [@jaysh](https://github.com/jaysh) - Autocomplete support
 * [@rmhsilva](https://github.com/rmhsilva) - Case-Insensitive directory name matching
-* [@janosgyerik](https://github.com/janosgyerik) - Test cases
+* [@janosgyerik](https://github.com/janosgyerik) - Test cases, BSD support
 
 ---
 
