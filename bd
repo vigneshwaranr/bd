@@ -3,6 +3,7 @@ usage_error () {
   cat << EOF
 ------------------------------------------------------------------
 Name: bd
+Version: 1.0
 
 ------------------------------------------------------------------
 Description: Go back to a specified directory up in the hierarchy.
@@ -10,31 +11,8 @@ Description: Go back to a specified directory up in the hierarchy.
 ------------------------------------------------------------------
 How to use:
 
-If you are in this path /home/user/project/src/org/main/site/utils/file/reader/whatever
-and you want to go to site directory quickly, then just type:
-     . bd site
+Please refer https://github.com/vigneshwaranr/bd
 
-If there are more than one directories with same name up in the hierarchy,
-bd will take you to the closest. (Not considering the immediate parent.)
-
-If you don't want to type the full directory name, then you can use 
-the -s switch (meaning starts with) and just give the starting few characters
-     . bd -s si
-
-------------------------------------------------------------------
-Extra settings:
-
-To get the most out of it, put this line: 
-     alias bd='. bd -s'
-in your ~/.bashrc file so that it is no longer necessary to put a dot and space.
-
-You can simply type 'bd <starting few letters>' to go back quickly.
-
-So in the case of the given example, it would be
-     'bd s' or 'bd si'
-
-For case-insensitive directory matching, using -si instead of -s, after bd:
-     '. bd -si'
 EOF
 }
 
@@ -42,10 +20,10 @@ newpwd() {
   oldpwd=$1
   if [ "$2" = -s ]
   then
-    NEWPWD=`echo $oldpwd | sed 's|\(/'$3'[^/]*/\).*|\1|'`
+    NEWPWD=`echo $oldpwd | sed 's|\(.*/'$3'[^/]*/\).*|\1|'`
   elif [ "$2" = -si ]
   then
-    NEWPWD=`echo $oldpwd | perl -pe 's|(/'$3'[^/]*/).*|$1|i'`
+    NEWPWD=`echo $oldpwd | perl -pe 's|(.*/'$3'[^/]*/).*|$1|i'`
   else
     NEWPWD=`echo $oldpwd | sed 's|\(.*/'$2'/\).*|\1|'`
   fi
@@ -54,7 +32,7 @@ newpwd() {
 if [ $# -eq 0 ]
 then
   usage_error
-elif [ $# -eq 1 -a "$1" = -s ]
+elif [ "${@: -1}" = -v ]
 then
   usage_error
 else
@@ -65,9 +43,9 @@ else
   if [ "$NEWPWD" = "$oldpwd" ]
   then
     echo "No such occurrence."
+  else
+    echo $NEWPWD
+    cd "$NEWPWD"
   fi
-  
-  echo $NEWPWD
-  cd "$NEWPWD"
   unset NEWPWD
 fi

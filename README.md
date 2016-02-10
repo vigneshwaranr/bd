@@ -10,7 +10,7 @@ Quickly go back to a specific parent directory in bash instead of typing "cd ../
 ```shell
 wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
 chmod +rx /usr/bin/bd
-echo 'alias bd=". bd -s"' >> ~/.bashrc
+echo 'alias bd=". bd -si"' >> ~/.bashrc
 source ~/.bashrc
 
 # If you need autocomplete support, follow these two steps
@@ -18,7 +18,7 @@ wget -O /etc/bash_completion.d/bd https://raw.github.com/vigneshwaranr/bd/master
 source /etc/bash_completion.d/bd
 ```
 
-To enable case-insensitive directory name matching, use `-si` instead of `-s` in the alias.
+To enable case-sensitive directory name matching, use `-s` instead of `-si` in the alias.
 
 ---
 
