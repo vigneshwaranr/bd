@@ -66,6 +66,10 @@ assertEquals $oldpwd $NEWPWD
 newpwd /usr/share/info -si Sh
 assertEquals /usr/share/ $NEWPWD
 
+# should jump for mismatched case prefix match with -si
+newpwd /usr/sHAre/info -si Sh
+assertEquals /usr/sHAre/ $NEWPWD
+
 # should jump for closest mismatched case prefix match with -si
 newpwd /usr/share/info/share/bin -si Sh
 assertEquals /usr/share/info/share/ $NEWPWD
