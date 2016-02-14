@@ -31,31 +31,44 @@ assertEquals() {
     fi
 }
 
-oldpwd=/home/user/project/src/org/main/site/utils/file/reader/whatever
-
 # should do nothing if run with no args
+oldpwd=/usr/share/info
 newpwd $oldpwd
 assertEquals $oldpwd $NEWPWD
 
 # should jump for exact match
-newpwd $oldpwd src
-assertEquals /home/user/project/src/ $NEWPWD
+newpwd /usr/share/info share
+assertEquals /usr/share/ $NEWPWD
+
+# should jump for closest exact match
+newpwd /usr/share/info/share/bin share
+assertEquals /usr/share/info/share/ $NEWPWD
 
 # should do nothing for prefix match without -s
-newpwd $oldpwd sr
+oldpwd=/usr/share/info
+newpwd $oldpwd sh
 assertEquals $oldpwd $NEWPWD
 
 # should jump for prefix match with -s
-newpwd $oldpwd -s sr
-assertEquals /home/user/project/src/ $NEWPWD
+newpwd /usr/share/info -s sh
+assertEquals /usr/share/ $NEWPWD
+
+# should jump for closest prefix match with -s
+newpwd /usr/share/info/share/bin -s sh
+assertEquals /usr/share/info/share/ $NEWPWD
 
 # should do nothing for mismatched case prefix match without -si
-newpwd $oldpwd -s Sr
+oldpwd=/usr/share/info
+newpwd $oldpwd -s Sh
 assertEquals $oldpwd $NEWPWD
 
 # should jump for mismatched case prefix match with -si
-newpwd $oldpwd -si Sr
-assertEquals /home/user/project/src/ $NEWPWD
+newpwd /usr/share/info -si Sh
+assertEquals /usr/share/ $NEWPWD
+
+# should jump for closest mismatched case prefix match with -si
+newpwd /usr/share/info/share/bin -si Sh
+assertEquals /usr/share/info/share/ $NEWPWD
 
 # handling spaces: should do nothing for prefix match without -s
 newpwd '/home/user/my project/src' my
@@ -64,10 +77,6 @@ assertEquals '/home/user/my project/src' "$NEWPWD"
 # handling spaces: should jump for exact match
 newpwd '/home/user/my project/src' -s my
 assertEquals '/home/user/my project/' "$NEWPWD"
-
-# should jump to closest match
-newpwd /tmp/a/b/c/d/a/b a
-assertEquals /tmp/a/b/c/d/a/ "$NEWPWD"
 
 echo
 [[ $failure = 0 ]] && printf $green || printf $red
