@@ -1,6 +1,10 @@
 #!/bin/bash
 
-. bd nonexistent > /dev/null
+# make sure we're in the project directory
+cd $(dirname "$0")
+
+# just to include the functions defined in ./bd
+. ./bd /dev/null > /dev/null
 
 red='\e[0;31m'
 green='\e[0;32m'
@@ -18,47 +22,65 @@ assertEquals() {
         ((success++))
     else
         ((failure++))
-        echo "Assertion failed: $expected != $actual" >&2
-        caller 0
-        echo
+        {
+            echo Assertion failed on line $(caller 0)
+            echo "  Expected: $expected"
+            echo "  Actual  : $actual"
+            echo
+        } >&2
     fi
 }
 
-sample=/home/user/project/src/org/main/site/utils/file/reader/whatever
+# should do nothing if run with no args
+oldpwd=/usr/share/info
+newpwd $oldpwd
+assertEquals $oldpwd $NEWPWD
 
-# test run with no args
-newpwd $sample
-assertEquals $sample $NEWPWD
+# should jump for exact match
+newpwd /usr/share/info share
+assertEquals /usr/share/ $NEWPWD
 
-# test run with exact match
-newpwd $sample src
-assertEquals /home/user/project/src/ $NEWPWD
+# should jump for closest exact match
+newpwd /usr/share/info/share/bin share
+assertEquals /usr/share/info/share/ $NEWPWD
 
-# test run with prefix but no -s so not found
-newpwd $sample sr
-assertEquals $sample $NEWPWD
+# should do nothing for prefix match without -s
+oldpwd=/usr/share/info
+newpwd $oldpwd sh
+assertEquals $oldpwd $NEWPWD
 
-# test run with prefix found
-newpwd $sample -s sr
-assertEquals /home/user/project/src/ $NEWPWD
+# should jump for prefix match with -s
+newpwd /usr/share/info -s sh
+assertEquals /usr/share/ $NEWPWD
 
-# test run with prefix not found because case sensitive
-newpwd $sample -s Sr
-assertEquals $sample $NEWPWD
+# should jump for closest prefix match with -s
+newpwd /usr/share/info/share/bin -s sh
+assertEquals /usr/share/info/share/ $NEWPWD
 
-# test run with prefix found thanks to -si
-newpwd $sample -si Sr
-assertEquals /home/user/project/src/ $NEWPWD
+# should do nothing for mismatched case prefix match without -si
+oldpwd=/usr/share/info
+newpwd $oldpwd -s Sh
+assertEquals $oldpwd $NEWPWD
 
-sample='/home/user/my project/src'
+# should jump for mismatched case prefix match with -si
+newpwd /usr/share/info -si Sh
+assertEquals /usr/share/ $NEWPWD
 
-# test run with space in dirname
-newpwd "$sample" -s my
+# should jump for mismatched case prefix match with -si
+newpwd /usr/sHAre/info -si Sh
+assertEquals /usr/sHAre/ $NEWPWD
+
+# should jump for closest mismatched case prefix match with -si
+newpwd /usr/share/info/share/bin -si Sh
+assertEquals /usr/share/info/share/ $NEWPWD
+
+# handling spaces: should do nothing for prefix match without -s
+newpwd '/home/user/my project/src' my
+assertEquals '/home/user/my project/src' "$NEWPWD"
+
+# handling spaces: should jump for exact match
+newpwd '/home/user/my project/src' -s my
 assertEquals '/home/user/my project/' "$NEWPWD"
-
-# should take to closest matching dir
-newpwd /tmp/a/b/c/d/a/b a
-assertEquals /tmp/a/b/c/d/a/ "$NEWPWD"
 
 echo
 [[ $failure = 0 ]] && printf $green || printf $red
