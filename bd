@@ -20,12 +20,15 @@ newpwd() {
   oldpwd=$1
   if [ "$2" = -s ]
   then
-    NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$3'[^/]*/\).*|\1|')
+    pattern=$3
+    NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'[^/]*/\).*|\1|')
   elif [ "$2" = -si ]
   then
-    NEWPWD=$(echo $oldpwd | perl -pe 's|(.*/'$3'[^/]*/).*|$1|i')
+    pattern=$3
+    NEWPWD=$(echo $oldpwd | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
   else
-    NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$2'/\).*|\1|')
+    pattern=$2
+    NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'/\).*|\1|')
   fi
 }
 
