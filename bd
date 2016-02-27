@@ -18,15 +18,19 @@ EOF
 
 newpwd() {
   oldpwd=$1
-  if [ "$2" = -s ]
-  then
-    NEWPWD=`echo $oldpwd | sed 's|\(.*/'$3'[^/]*/\).*|\1|'`
-  elif [ "$2" = -si ]
-  then
-    NEWPWD=`echo $oldpwd | perl -pe 's|(.*/'$3'[^/]*/).*|$1|i'`
-  else
-    NEWPWD=`echo $oldpwd | sed 's|\(.*/'$2'/\).*|\1|'`
-  fi
+  case "$2" in
+    -s)
+      pattern=$3
+      NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'[^/]*/\).*|\1|')
+      ;;
+    -si)
+      pattern=$3
+      NEWPWD=$(echo $oldpwd | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
+      ;;
+    *)
+      pattern=$2
+      NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'/\).*|\1|')
+  esac
 }
 
 if [ $# -eq 0 ]
@@ -36,7 +40,7 @@ elif [ "${@: -1}" = -v ]
 then
   usage_error
 else
-  oldpwd=`pwd`
+  oldpwd=$(pwd)
 
   newpwd "$oldpwd" "$@"
   
