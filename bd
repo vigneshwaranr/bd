@@ -3,7 +3,7 @@ usage_error () {
   cat << EOF
 ------------------------------------------------------------------
 Name: bd
-Version: 1.0
+Version: 1.01
 
 ------------------------------------------------------------------
 Description: Go back to a specified directory up in the hierarchy.
