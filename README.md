@@ -8,7 +8,7 @@ Quickly go back to a specific parent directory in bash instead of typing "cd ../
 **Installation**
 
 ```shell
-wget -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
+wget --no-check-certificate -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
 chmod +rx /usr/bin/bd
 echo 'alias bd=". bd -si"' >> ~/.bashrc
 source ~/.bashrc
