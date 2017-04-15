@@ -7,7 +7,7 @@ _bd()
     # Current argument on the command line.
     local cur=${COMP_WORDS[COMP_CWORD]}
     # Available directories to autcomplete to.
-    local completions=$( pwd | sed 's|/|\n|g' )
+    local completions=$( pwd | sed 's|/|\'$'\n|g' )
 
     COMPREPLY=( $(compgen -W "$completions" -- $cur) )
 }
