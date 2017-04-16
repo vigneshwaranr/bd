@@ -7,9 +7,21 @@ Quickly go back to a specific parent directory in bash instead of typing "cd ../
 
 **Installation**
 
+***For Debian/Ubuntu***
+
+Packages available here:
+
+https://tracker.debian.org/pkg/bd
+
+https://launchpad.net/ubuntu/+source/bd
+
+
+
+***For other OS***
+
 ```shell
-wget --no-check-certificate -O /usr/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
-chmod +rx /usr/bin/bd
+wget --no-check-certificate -O /usr/local/bin/bd https://raw.github.com/vigneshwaranr/bd/master/bd
+chmod +rx /usr/local/bin/bd
 echo 'alias bd=". bd -si"' >> ~/.bashrc
 source ~/.bashrc
 
