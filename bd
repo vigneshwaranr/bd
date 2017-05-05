@@ -52,4 +52,5 @@ else
     cd "$NEWPWD"
   fi
   unset NEWPWD
+  unhash -d NEWPWD
 fi
