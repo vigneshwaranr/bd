@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 usage_error () {
   cat << EOF
 ------------------------------------------------------------------
@@ -33,10 +33,12 @@ newpwd() {
   esac
 }
 
+for last; do true; done
+
 if [ $# -eq 0 ]
 then
   usage_error
-elif [ "${@: -1}" = -v ]
+elif [ $last = -v ]
 then
   usage_error
 else
@@ -53,3 +55,6 @@ else
   fi
   unset NEWPWD
 fi
+
+unset last
+
