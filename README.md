@@ -7,6 +7,14 @@ Quickly go back to a specific parent directory in bash instead of typing "cd ../
 
 **Installation**
 
+***For OS X/macOS***
+
+Using [MacPorts](https://ports.macports.org/port/bd):
+
+```bash
+sudo port install bd
+```
+
 ***For Debian/Ubuntu***
 
 Packages available here:
