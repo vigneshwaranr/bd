@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # make sure we're in the project directory
 cd $(dirname "$0")

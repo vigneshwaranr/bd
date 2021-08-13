@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 help_msg () {
   printf "Usage: bd [OPTION]... [PATTERN]\n"
   printf "Quickly go back to a specific parent directory in bash.\n\n"
