@@ -14,7 +14,7 @@ help_msg () {
   return 0
 }
 
-usage_error () {
+usage_error() {
   cat << EOF
 ------------------------------------------------------------------
 Name: bd
@@ -52,19 +52,16 @@ newpwd() {
   esac
 }
 
-if [ $# -eq 0 ]
-then
+if [ $# -eq 0 ]; then
   usage_error
-elif [ "${@: -1}" = "-v" ]
-then
+elif [ "${@: -1}" = "-v" ]; then
   usage_error
 else
   oldpwd=$(pwd)
 
   newpwd "$oldpwd" "$@"
-  
-  if [ "$NEWPWD" = "$oldpwd" ]
-  then
+
+  if [ "$NEWPWD" = "$oldpwd" ]; then
     echo "No such occurrence."
   else
     echo "$NEWPWD"
