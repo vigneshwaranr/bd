@@ -37,25 +37,25 @@ newpwd() {
   case "$2" in
     -s)
       pattern=$3
-      NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'[^/]*/\).*|\1|')
+      NEWPWD=$(echo "$oldpwd" | sed 's|\(.*/'$pattern'[^/]*/\).*|\1|')
       ;;
     -si)
       pattern=$3
-      NEWPWD=$(echo $oldpwd | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
+      NEWPWD=$(echo "$oldpwd" | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
       ;;
     -?|--help)
       help_msg
       ;;
     *)
       pattern=$2
-      NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'/\).*|\1|')
+      NEWPWD=$(echo "$oldpwd" | sed 's|\(.*/'$pattern'/\).*|\1|')
   esac
 }
 
 if [ $# -eq 0 ]
 then
   usage_error
-elif [ "${@: -1}" = -v ]
+elif [ "${@: -1}" = "-v" ]
 then
   usage_error
 else
@@ -67,8 +67,8 @@ else
   then
     echo "No such occurrence."
   else
-    echo $NEWPWD
-    cd "$NEWPWD"
+    echo "$NEWPWD"
+    cd -- "$NEWPWD"
   fi
   unset NEWPWD
 fi
