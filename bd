@@ -5,7 +5,7 @@ help_msg () {
 
   printf "\e[1mOPTIONS\e[0m\n"
   printf "  %-28s %s\n" "-s" "PATTERN can match part of directory name"
-  printf "  %-28s %s\n" "-si" "PATTERN is Case Insensitve and can be partial"
+  printf "  %-28s %s\n" "-si" "PATTERN is Case Insensitive and can be partial"
   printf "  %-28s %s\n" "-?, --help" "Display this message"
 
   printf "\n\e[1mALTERNATE USAGE EXAMPLES\e[0m\n"
