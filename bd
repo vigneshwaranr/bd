@@ -1,4 +1,19 @@
 #! /bin/bash
+help_msg () {
+  printf "Usage: bd [OPTION]... [PATTERN]\n"
+  printf "Quickly go back to a specific parent directory in bash.\n\n"
+
+  printf "\e[1mOPTIONS\e[0m\n"
+  printf "  %-28s %s\n" "-s" "PATTERN can match part of directory name"
+  printf "  %-28s %s\n" "-si" "PATTERN is Case Insensitve and can be partial"
+  printf "  %-28s %s\n" "-?, --help" "Display this message"
+
+  printf "\n\e[1mALTERNATE USAGE EXAMPLES\e[0m\n"
+  printf "  %-28s %s\n" "\`bd -si som\`/script.sh" "Execute \"script.sh\" in matching path"
+
+  return 0
+}
+
 usage_error () {
   cat << EOF
 ------------------------------------------------------------------
@@ -14,6 +29,7 @@ How to use:
 Please refer https://github.com/vigneshwaranr/bd
 
 EOF
+  return 1
 }
 
 newpwd() {
@@ -26,6 +42,9 @@ newpwd() {
     -si)
       pattern=$3
       NEWPWD=$(echo $oldpwd | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
+      ;;
+    -?|--help)
+      help_msg
       ;;
     *)
       pattern=$2
