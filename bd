@@ -15,8 +15,7 @@ help_msg () {
 }
 
 usage_error () {
-  cat << EOF
-------------------------------------------------------------------
+  echo "------------------------------------------------------------------
 Name: bd
 Version: 1.03
 
@@ -26,9 +25,7 @@ Description: Go back to a specified directory up in the hierarchy.
 ------------------------------------------------------------------
 How to use:
 
-Please refer https://github.com/vigneshwaranr/bd
-
-EOF
+Please refer https://github.com/vigneshwaranr/bd"
   return 1
 }
 
