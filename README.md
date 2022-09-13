@@ -23,7 +23,13 @@ https://tracker.debian.org/pkg/bd
 
 https://launchpad.net/ubuntu/+source/bd
 
+***For Arch Linux***
 
+AUR packages available here:
+
+https://aur.archlinux.org/packages/bd
+
+https://aur.archlinux.org/packages/bd-git
 
 ***For other OS***
 
