@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # make sure we're in the project directory
-cd $(dirname "$0")
+cd -- "$(dirname "$0")"
 
 # just to include the functions defined in ./bd
 . ./bd /dev/null > /dev/null
@@ -18,7 +18,7 @@ assertEquals() {
     ((total++))
     expected=$1
     actual=$2
-    if [[ $expected = $actual ]]; then
+    if [[ $expected == "$actual" ]]; then
         ((success++))
     else
         ((failure++))

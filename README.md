@@ -51,7 +51,7 @@ To enable case-sensitive directory name matching, use `-s` instead of `-si` in t
 **How to use:**
 
 If you are in this path `/home/user/project/src/org/main/site/utils/file/reader/whatever`
-and you want to go to `site` directory quickly, 
+and you want to go to `site` directory quickly,
 
 then just type:
      `bd site`
@@ -73,7 +73,7 @@ You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> wi
 1. If you just want to list the contents of a parent directory,
    without going there, then you can use:
 		<code>ls \`bd p\`</code>
-   in the given example, it will list the contents of 
+   in the given example, it will list the contents of
              `/home/user/project/`
 
 2. If you want to execute a file somewhere in a parent directory,
@@ -106,4 +106,4 @@ You can take advantage of that by combining <code>\`bd \<letter(s)\>\`</code> wi
 * [0rax/fish-bd](https://github.com/0rax/fish-bd) - bd for [fish](http://fishshell.com/) shell
 * [rvraghav93/win-bd](https://github.com/rvraghav93/win-bd) - bd for command prompt
 * [peterwvj/eshell-up](https://github.com/peterwvj/eshell-up) - bd inspired command for Emacs' eshell
-* [alebcay/awesome-shell](https://github.com/alebcay/awesome-shell) - A curated list of awesome command-line frameworks, toolkits, guides and gizmos 
+* [alebcay/awesome-shell](https://github.com/alebcay/awesome-shell) - A curated list of awesome command-line frameworks, toolkits, guides and gizmos

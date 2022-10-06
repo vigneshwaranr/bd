@@ -1,11 +1,11 @@
-#! /bin/bash
+#!/usr/bin/env bash
 help_msg () {
   printf "Usage: bd [OPTION]... [PATTERN]\n"
   printf "Quickly go back to a specific parent directory in bash.\n\n"
 
   printf "\e[1mOPTIONS\e[0m\n"
   printf "  %-28s %s\n" "-s" "PATTERN can match part of directory name"
-  printf "  %-28s %s\n" "-si" "PATTERN is Case Insensitve and can be partial"
+  printf "  %-28s %s\n" "-si" "PATTERN is Case Insensitive and can be partial"
   printf "  %-28s %s\n" "-?, --help" "Display this message"
 
   printf "\n\e[1mALTERNATE USAGE EXAMPLES\e[0m\n"
@@ -14,7 +14,7 @@ help_msg () {
   return 0
 }
 
-usage_error () {
+usage_error() {
   cat << EOF
 ------------------------------------------------------------------
 Name: bd
@@ -37,38 +37,35 @@ newpwd() {
   case "$2" in
     -s)
       pattern=$3
-      NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'[^/]*/\).*|\1|')
+      NEWPWD=$(echo "$oldpwd" | sed 's|\(.*/'$pattern'[^/]*/\).*|\1|')
       ;;
     -si)
       pattern=$3
-      NEWPWD=$(echo $oldpwd | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
+      NEWPWD=$(echo "$oldpwd" | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
       ;;
     -?|--help)
       help_msg
       ;;
     *)
       pattern=$2
-      NEWPWD=$(echo $oldpwd | sed 's|\(.*/'$pattern'/\).*|\1|')
+      NEWPWD=$(echo "$oldpwd" | sed 's|\(.*/'$pattern'/\).*|\1|')
   esac
 }
 
-if [ $# -eq 0 ]
-then
+if [ $# -eq 0 ]; then
   usage_error
-elif [ "${@: -1}" = -v ]
-then
+elif [ "${@: -1}" = "-v" ]; then
   usage_error
 else
   oldpwd=$(pwd)
 
   newpwd "$oldpwd" "$@"
-  
-  if [ "$NEWPWD" = "$oldpwd" ]
-  then
+
+  if [ "$NEWPWD" = "$oldpwd" ]; then
     echo "No such occurrence."
   else
-    echo $NEWPWD
-    cd "$NEWPWD"
+    echo "$NEWPWD"
+    cd -- "$NEWPWD"
   fi
   unset NEWPWD
 fi
