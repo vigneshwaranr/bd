@@ -11,4 +11,4 @@ _bd()
 
     COMPREPLY=( $(compgen -W "$completions" -- $cur) )
 }
-complete -F _bd bd
+complete -o nosort -F _bd bd
