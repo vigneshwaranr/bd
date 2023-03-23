@@ -1,5 +1,5 @@
 #! /bin/bash
-help_msg () {
+_bd_help_msg () {
   printf "Usage: bd [OPTION]... [PATTERN]\n"
   printf "Quickly go back to a specific parent directory in bash.\n\n"
 
@@ -14,7 +14,7 @@ help_msg () {
   return 0
 }
 
-usage_error () {
+_bd_usage_error () {
   cat << EOF
 ------------------------------------------------------------------
 Name: bd
@@ -32,7 +32,7 @@ EOF
   return 1
 }
 
-newpwd() {
+_bd_newpwd() {
   oldpwd=$1
   case "$2" in
     -s)
@@ -44,7 +44,7 @@ newpwd() {
       NEWPWD=$(echo $oldpwd | perl -pe 's|(.*/'$pattern'[^/]*/).*|$1|i')
       ;;
     -?|--help)
-      help_msg
+      _bd_help_msg
       ;;
     *)
       pattern=$2
@@ -54,14 +54,14 @@ newpwd() {
 
 if [ $# -eq 0 ]
 then
-  usage_error
+  _bd_usage_error
 elif [ "${@: -1}" = -v ]
 then
-  usage_error
+  _bd_usage_error
 else
   oldpwd=$(pwd)
 
-  newpwd "$oldpwd" "$@"
+  _bd_newpwd "$oldpwd" "$@"
   
   if [ "$NEWPWD" = "$oldpwd" ]
   then
@@ -72,3 +72,6 @@ else
   fi
   unset NEWPWD
 fi
+
+# Unset functions (if this file is sourced; they otherwise remain defined in the current shell)
+unset -f _bd_help_msg _bd_usage_error _bd_newpwd
